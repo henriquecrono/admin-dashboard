@@ -15,10 +15,16 @@ import {
 	ListItemText,
 	Toolbar,
 	Typography,
+	Collapse,
 } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import FiberNewIcon from '@mui/icons-material/FiberNew';
+import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
@@ -29,8 +35,13 @@ interface Props {
 
 export default function ResponsiveDrawer({ children }: Props) {
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const [openUserItems, setOpenUserItems] = useState(false);
 
 	const navigate = useNavigate();
+
+	const handleClickUserItems = () => {
+		setOpenUserItems(!openUserItems);
+	};
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
@@ -57,6 +68,46 @@ export default function ResponsiveDrawer({ children }: Props) {
 					</ListItemIcon>
 					<ListItemText primary={'Home'} />
 				</ListItemButton>
+
+				<ListItemButton onClick={handleClickUserItems} key={'user'}>
+					<ListItemIcon>
+						<PeopleIcon />
+					</ListItemIcon>
+					<ListItemText primary={'Users'} />
+					{openUserItems ? <ExpandLess /> : <ExpandMore />}
+				</ListItemButton>
+
+				<Collapse in={openUserItems} timeout="auto" unmountOnExit>
+					<List component="div" disablePadding>
+						<ListItemButton
+							sx={{ pl: 4 }}
+							onClick={() => {
+								navigate('/user');
+								handleDrawerToggle();
+							}}
+							key={'user-list'}
+						>
+							<ListItemIcon>
+								<FormatListNumberedIcon />
+							</ListItemIcon>
+							<ListItemText primary={'List'} />
+						</ListItemButton>
+
+						<ListItemButton
+							sx={{ pl: 4 }}
+							onClick={() => {
+								navigate('/user/create');
+								handleDrawerToggle();
+							}}
+							key={'user-create'}
+						>
+							<ListItemIcon>
+								<FiberNewIcon />
+							</ListItemIcon>
+							<ListItemText primary={'Create'} />
+						</ListItemButton>
+					</List>
+				</Collapse>
 
 				<ListItemButton
 					onClick={() => {
