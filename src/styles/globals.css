@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground: #272727;
+	--background: #f9f9f9;
+	--accent-one: #e5a619;
+	--accent-two: #ecc264;
+	--accent-three: #f2ddae;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	color: var(--foreground);
+	background: var(--background);
+}
+
+.min-h-screen-64-pixel {
+	min-height: calc(100vh - 64px);
+}
+
+.text-foreground {
+	color: var(--foreground);
+}
+
+.text-background {
+	color: var(--background);
+}
+
+.text-accent-one {
+	color: var(--accent-one);
+}
+
+.text-accent-two {
+	color: var(--accent-two);
+}
+
+.text-accent-three {
+	color: var(--accent-three);
+}
+
+.bg-foreground {
+	background: var(--foreground);
+}
+
+.bg-background-default {
+	background: var(--background);
+}
+
+.bg-accent-one {
+	background: var(--accent-one);
+}
+
+.bg-accent-two {
+	background: var(--accent-two);
+}
+
+.bg-accent-three {
+	background: var(--accent-three);
+}
