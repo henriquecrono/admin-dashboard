@@ -35,12 +35,12 @@ interface Props {
 
 export default function ResponsiveDrawer({ children }: Props) {
 	const [mobileOpen, setMobileOpen] = useState(false);
-	const [openUserItems, setOpenUserItems] = useState(false);
+	const [openPokemonItems, setOpenPokemonItems] = useState(false);
 
 	const navigate = useNavigate();
 
-	const handleClickUserItems = () => {
-		setOpenUserItems(!openUserItems);
+	const handleClickPokemonItems = () => {
+		setOpenPokemonItems(!openPokemonItems);
 	};
 
 	const handleDrawerToggle = () => {
@@ -69,23 +69,23 @@ export default function ResponsiveDrawer({ children }: Props) {
 					<ListItemText primary={'Home'} />
 				</ListItemButton>
 
-				<ListItemButton onClick={handleClickUserItems} key={'user'}>
+				<ListItemButton onClick={handleClickPokemonItems} key={'pokemon'}>
 					<ListItemIcon>
 						<PeopleIcon />
 					</ListItemIcon>
-					<ListItemText primary={'Users'} />
-					{openUserItems ? <ExpandLess /> : <ExpandMore />}
+					<ListItemText primary={'Pokémon'} />
+					{openPokemonItems ? <ExpandLess /> : <ExpandMore />}
 				</ListItemButton>
 
-				<Collapse in={openUserItems} timeout="auto" unmountOnExit>
+				<Collapse in={openPokemonItems} timeout="auto" unmountOnExit>
 					<List component="div" disablePadding>
 						<ListItemButton
 							sx={{ pl: 4 }}
 							onClick={() => {
-								navigate('/user');
+								navigate('/pokemon');
 								handleDrawerToggle();
 							}}
-							key={'user-list'}
+							key={'pokemon-list'}
 						>
 							<ListItemIcon>
 								<FormatListNumberedIcon />
@@ -96,10 +96,10 @@ export default function ResponsiveDrawer({ children }: Props) {
 						<ListItemButton
 							sx={{ pl: 4 }}
 							onClick={() => {
-								navigate('/user/create');
+								navigate('/pokemon/create');
 								handleDrawerToggle();
 							}}
-							key={'user-create'}
+							key={'pokemon-create'}
 						>
 							<ListItemIcon>
 								<FiberNewIcon />
@@ -146,7 +146,7 @@ export default function ResponsiveDrawer({ children }: Props) {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						User
+						Admin Dashboard
 					</Typography>
 				</Toolbar>
 			</AppBar>
