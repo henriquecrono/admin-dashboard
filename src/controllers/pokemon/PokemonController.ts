@@ -8,4 +8,10 @@ export default class PokemonController {
 		const error = response.status !== 200;
 		return { error, result: response.data };
 	}
+
+	async get(name: string | undefined) {
+		const response = await this.repository.get(name);
+		const error = response.status !== 200;
+		return { error, result: response.data };
+	}
 }

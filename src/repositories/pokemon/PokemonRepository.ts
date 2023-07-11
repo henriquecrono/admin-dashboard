@@ -9,4 +9,13 @@ export default class PokemonRepository {
 			return error.response;
 		}
 	}
+
+	async get(name: string | undefined) {
+		try {
+			const response = await axios().get(`/pokemon/${name}`);
+			return response;
+		} catch (error: any) {
+			return error.response;
+		}
+	}
 }

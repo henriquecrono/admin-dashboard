@@ -23,9 +23,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import FiberNewIcon from '@mui/icons-material/FiberNew';
-import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PetsIcon from '@mui/icons-material/Pets';
 
 const drawerWidth = 240;
 
@@ -71,7 +70,7 @@ export default function ResponsiveDrawer({ children }: Props) {
 
 				<ListItemButton onClick={handleClickPokemonItems} key={'pokemon'}>
 					<ListItemIcon>
-						<PeopleIcon />
+						<PetsIcon />
 					</ListItemIcon>
 					<ListItemText primary={'Pokémon'} />
 					{openPokemonItems ? <ExpandLess /> : <ExpandMore />}
@@ -91,20 +90,6 @@ export default function ResponsiveDrawer({ children }: Props) {
 								<FormatListNumberedIcon />
 							</ListItemIcon>
 							<ListItemText primary={'List'} />
-						</ListItemButton>
-
-						<ListItemButton
-							sx={{ pl: 4 }}
-							onClick={() => {
-								navigate('/pokemon/create');
-								handleDrawerToggle();
-							}}
-							key={'pokemon-create'}
-						>
-							<ListItemIcon>
-								<FiberNewIcon />
-							</ListItemIcon>
-							<ListItemText primary={'Create'} />
 						</ListItemButton>
 					</List>
 				</Collapse>
